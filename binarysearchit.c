@@ -1,9 +1,5 @@
 #include <stdio.h>
-void readnum(int a[],int n)
-{
-    for(int i=0;i<n;i++)
-       scanf("%d",&a[i]);
-}
+
 int binarysearch(int a[], int key, int n )
 {
     int l,h,mid;
