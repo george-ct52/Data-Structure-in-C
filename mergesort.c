@@ -15,7 +15,7 @@ void simplemerge(int a[],int f, int s , int t)
 {
   int i=f,j=s,k=0;
   int temp[50];
-  while(i<s && j<t)
+  while(i<s && j<=t)
   {
     if (a[i]<a[j])
     temp[k++]=a[i++];
