@@ -1,6 +1,11 @@
 # Data-Structure-in-C
 Repository for Data Structure Lab Semester 3 KTU
 
+### Viva Questions
+    1. What is a data structure ?
+    2. Why is there a need for data to be structured ?
+    3. Explain Bubble Sort's working
+    
 ### SYLLABUS
     1. Implementation of Polynomials and Sparse matrices using arrays**
     2. Implementation of Stack , Queues, Priority Queues, DEQUEUE and Circular Queues using arrays**
