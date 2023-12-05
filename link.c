@@ -1,128 +1,91 @@
+
 #include<stdio.h>
-#include<stdlib.h>
-struct Node
-{
-  int info;
-  struct Node* next;
-};
-typedef struct Node node;
-node* head=NULL;
-node* newnode()
-{
- node*p;
- p=(node*)malloc(sizeof(node));
- return p;
- }
-void insertfirst(int val)
-{
-  node* p=newnode();
-  p->info=val;
-  p->next =head;
-  head=p;
- }
-void display()
-{
-  node* curr=head;
-  while(curr!=NULL)
+#include<malloc.h>
+struct link
   {
-     printf("%d\t ",curr->info);
-      curr=curr->next;
-   }
+    int item;
+    struct link *next;
+  } ;
+
+typedef struct link node;
+node *head=NULL;
+node *newnode(int val)
+{  node *p;
+   p=(node *)malloc(sizeof(node));
+   p->item=val;
+   p->next=NULL;
 }
- void insertafter(int item,int val)
+
+void displaylist()
  {
-  node* curr=head;
-  while(curr!=NULL && curr->info!=item)
-     curr=curr->next;
-   if(curr==NULL)
-    printf("No such node exist");
-   else
-   {
-     node* p=newnode();
-     p->info=val;
-     p->next=curr->next;
-     curr->next=p;
-    }
- }
- void insertbefore(int item,int val)
- {
-  node* curr=head;node *prev=NULL;
-  while(curr!=NULL && curr->info!=item){
-     prev=curr;
-     curr=curr->next;}
-   if(curr==NULL)
-    printf("No such node exist");
-   else
-   {
-     node* p=newnode();
-     p->info=val;
-     p->next=curr;
-     if(prev==NULL)
-        head=p;
-     else
-        prev->next=p;
-    }
+   node *curr;
+   curr=head;
+   while(curr!=NULL)
+   { printf("%d  -  ", curr->item);curr=curr->next;}
   }
- void deletenode(int item)
- {
-  node* curr=head;node *prev=NULL;
-  while(curr!=NULL && curr->info!=item){
-     prev=curr;
-     curr=curr->next;}
-   if(curr==NULL)
-    printf("No node to delete");
-   else
-   {
-     
-     if(prev==NULL)
-        head=curr->next;
+
+void insertfirst(int val)
+{ node *p;
+   p=newnode(val);
+   p->next=head;
+   head=p;
+}
+
+void insertbefore(int item1,int val)
+{ node *curr=head,*prev=NULL,*p;
+  while(curr!=NULL && curr-> item != item1)
+    {prev=curr;
+    curr=curr->next;}
+  if(curr==NULL)
+     printf("Item Not Found\n");
+  else{
+  if(prev==head)
+       insertfirst(val);
      else
-        prev->next=curr->next;
-    free(curr);
-    }
-   }
-void main()
-{
-  int c,in,ip;
-  printf("1.Insert A Node\n2.Insert After An Item\n3.Insert before an Item\n4.Delete a Node\n5.Display\n6.Exit\n");
-  do
-  {
-    printf("\nEnter choice:\n");
-    scanf("%d",&c);
-    switch(c)
-     {
-	case 1:
-       	          printf("Enter an element to add:\n");
-         	  scanf("%d",&in);
-		  insertfirst(in);
-	 break;
-	 case 2:
-       	          printf("Enter an element to add:\n");
-         	  scanf("%d",&in);
-                  printf("Enter the element after which it needs to be added:\n");
-         	  scanf("%d",&ip);
-		  insertafter(ip,in);
-	 break;
-	 case 3:
-		  printf("Enter an element to add:\n");
-         	  scanf("%d",&in);
-                  printf("Enter the element before which it needs to be added:\n");
-         	  scanf("%d",&ip);
-		  insertbefore(ip,in);
-	 break;
-	case 4:
-		printf("Enter the data to be deleted:\n");
-         	  scanf("%d",&ip);
-		  deletenode(ip);
-	 break;
-        case 5: 
-                display();
-	 break;
- 	case 6:
-		printf("Exiting program\n");
-	 break;
-        default:
-                printf("Invalid Input\n");
-     }
-  }while(c!=6);
- }
+       {p=newnode(val);
+       p->next= prev->next;
+       prev->next=p;
+       }}
+}
+
+void insertafter(int item1,int val)
+{ node *curr=head,*p;
+
+  while(curr!=NULL && curr-> item != item1)
+    {curr=curr->next;}
+  if(curr==NULL)
+     printf("Item Not Found\n");
+  else
+       {p=newnode(val);
+       p->next= curr->next;
+       curr->next=p;
+       }
+}
+
+
+int main()
+ {
+  int ch,po,it;
+           
+   do
+     { printf("\n1. insert first\n2. Insert after\n3. display \n4. insert before\n5.quit\n");
+       printf("Enter the choice: ");
+       scanf("%d",&ch);
+       switch(ch)
+       { case 1:printf("value to be inserted:");
+                scanf("%d",&po); insertfirst(po);break;
+         case 2:printf("enter item after which the value to be inserted");
+                scanf("%d",&it);
+                printf("value to be inserted:");
+                scanf("%d",&po);insertafter(it,po);break;
+case 4:printf("enter item before which the value to be inserted");
+                scanf("%d",&it);
+                printf("value to be inserted:");
+                scanf("%d",&po);insertbefore(it,po);break;
+         case 3:displaylist();break;
+         case 5:break;
+          default:printf("Invalid choice");
+        }
+    }while(ch!=5);
+
+}
