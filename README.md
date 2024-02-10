@@ -5,6 +5,17 @@ Repository for Data Structure Lab Semester 3 KTU
     1. What is a data structure ?
     2. Why is there a need for data to be structured ?
     3. Explain Bubble Sort's working
+    4.Primitive and non primitive data types
+    5.Linked list advantage
+    6.Diff btw binary search nd linear search
+    7.Dfs and bfs explain
+    8.Post order traversal
+    9.Full and complete binary tree definition
+    10.Linear and non linear data structure example
+    11.Define data structure
+    12.Define graph
+    13.Difference between DFS and bfs 
+    14.Difference between complete and full binary tree
     
 ### SYLLABUS
     1. Implementation of Polynomials and Sparse matrices using arrays**
