@@ -1,4 +1,3 @@
-// Online C compiler to run C program online
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -46,7 +45,7 @@ node *add(node *a , node *b)
     node *c,*curr;
     c=newnode();
     curr=c;
-    while(a!=NULL & b!=NULL)
+    while(a!=NULL && b!=NULL)
     {
         if(a->expo==b->expo)
         {
@@ -59,12 +58,13 @@ node *add(node *a , node *b)
         {
             curr->expo=a->expo;
             curr->coeff=a->coeff;
+            a=a->next;
         }
         else
         {
             curr->expo=b->expo;
             curr->coeff=b->coeff;
-        }
+            b=b->next;        }
         if(a!=NULL && b!= NULL)
         {
             curr->next=newnode();
@@ -111,7 +111,7 @@ void display(node *a)
 {
    node *curr=a;
    printf("\n");
-   while(curr->next!=NULL)
+   while(curr!=NULL)
    {
        printf("%d x^%d",curr->coeff,curr->expo);
        if(curr->next!=NULL)
