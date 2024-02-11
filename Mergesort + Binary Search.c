@@ -14,25 +14,7 @@ void readnum(int a[], int n)
     scanf("%d",&a[i]);
 }
 
-int partition(int a[], int l, int h) {
-    int key = a[l];
-    int i = l;
-    int j = h;
-    while (i < j) {
-        do {
-            i++;
-        } while (a[i] <= key);
 
-        do {
-            j--;
-        } while (a[j] > key);
-
-        if (i < j)
-            swap(&a[i], &a[j]);
-    }
-    swap(&a[j], &a[l]);
-    return j;
-}
 
 
 int binarysearch(int a[], int n, int ele) {
